@@ -7,7 +7,7 @@ const fs = require("fs")
 // Variables
 const args = process.argv.slice(2)
 
-var openGenBot = {
+var  Botgen-HHG  = {
     grabIndex: 0,
     max: 0,
     results: []
@@ -19,7 +19,7 @@ async function grab(accountType){
         if(Botgen-HHG.grabIndex === Botgen-HHG.max){
             console.log(`Finished grabbing ${Botgen-HHG.max} ${accountType} accounts.`)
             console.log(`Saving the results to ${args[2]}`)
-            fs.writeFileSync(args[2], openGenBot.results.join("\n"), "utf8")
+            fs.writeFileSync(args[2], Botgen-HHG.results.join("\n"), "utf8")
             return console.log(`Results successfully saved to ${args[2]}`)
         }
     
