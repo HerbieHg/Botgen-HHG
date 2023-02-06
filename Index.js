@@ -1,36 +1,4 @@
-Skip to content
 
-I2rys
-
-/
-
-opengen-bot
-
-Public
-
-Code
-
-Issues
-
-Pull requests
-
-Actions
-
-Projects
-
-Security
-
-Insights
-
-opengen-bot/index.js
-
-@I2rys
-
-I2rys fixed: Changed delay to 1 second
-
- 1 contributor
-
-77 lines (63 sloc)  2.11 KB
 
 "use strict";
 
@@ -170,33 +138,9 @@ switch(args[0]){
 
 Footer
 
-© 2023 GitHub, Inc.
 
-Footer navigation
 
-Terms
 
-Privacy
-
-Security
-
-Status
-
-Docs
-
-Contact GitHub
-
-Pricing
-
-API
-
-Training
-
-Blog
-
-About
-
-opengen-bot/index.js at main · I2rys/opengen-bot
 
 
 
