@@ -1,77 +1,202 @@
+Skip to content
+
+I2rys
+
+/
+
+opengen-bot
+
+Public
+
+Code
+
+Issues
+
+Pull requests
+
+Actions
+
+Projects
+
+Security
+
+Insights
+
+opengen-bot/index.js
+
+@I2rys
+
+I2rys fixed: Changed delay to 1 second
+
+ 1 contributor
+
+77 lines (63 sloc)  2.11 KB
+
 "use strict";
 
 // Dependencies
+
 const axios = require("axios")
+
 const fs = require("fs")
 
 // Variables
+
 const args = process.argv.slice(2)
 
-var  Botgen-HHG  = {
+var openGenBot = {
+
     grabIndex: 0,
+
     max: 0,
+
     results: []
+
 }
 
 // Functions
+
 async function grab(accountType){
+
     try{
-        if(Botgen-HHG.grabIndex === Botgen-HHG.max){
-            console.log(`Finished grabbing ${Botgen-HHG.max} ${accountType} accounts.`)
+
+        if(openGenBot.grabIndex === openGenBot.max){
+
+            console.log(`Finished grabbing ${openGenBot.max} ${accountType} accounts.`)
+
             console.log(`Saving the results to ${args[2]}`)
-            fs.writeFileSync(args[2], Botgen-HHG.results.join("\n"), "utf8")
+
+            fs.writeFileSync(args[2], openGenBot.results.join("\n"), "utf8")
+
             return console.log(`Results successfully saved to ${args[2]}`)
+
         }
+
     
-        console.log(`Grabbing ${accountType} accounts. Index: ${Botgen-HHG.grabIndex}`)
+
+        console.log(`Grabbing ${accountType} accounts. Index: ${openGenBot.grabIndex}`)
+
     
+
         var response = await axios(`https://opengen.dpkghub.com/api/generate.php?type=${accountType}`)
+
         response = response.data
+
     
-        if(Botgen-HHG.results.includes(response)){
-            console.log(`Unable to grab ${accountType} account, due to duplicate/error. Index: ${Botgen-HHG.grabIndex}`)
+
+        if(openGenBot.results.includes(response)){
+
+            console.log(`Unable to grab ${accountType} account, due to duplicate/error. Index: ${openGenBot.grabIndex}`)
+
             console.log("Retrying...")
+
             return grab(accountType)
+
         }
+
     
-        Botgen-HHG.results.push(response)
+
+        openGenBot.results.push(response)
+
     
-        Botgen-HHG.grabIndex++
+
+        openGenBot.grabIndex++
+
         grab(accountType)
+
     }catch{
-        console.log(`Unable to grab ${accountType} account, due to duplicate/error. Index: ${Botgen-HHG.grabIndex}`)
-        console.log("Retrying... Porfavor espere 2 segundos.")
+
+        console.log(`Unable to grab ${accountType} account, due to duplicate/error. Index: ${openGenBot.grabIndex}`)
+
+        console.log("Retrying... Please wait for 2 seconds.")
 
         setTimeout(()=>{
+
             grab(accountType)
+
         }, 2000)
+
     }
+
 }
 
 //Main
+
 if(!args.length) return console.log(`Account Types: Netflix, Spotify, NordVPN & Disney(Disney plus).
+
 node index.js <accountType> <amount> <output>`)
 
-if(isNaN(args[1])) return console.log("esto no es número 😐.")
-if(!args[2]) return console.log("esto no es correcto 😐.")
+if(isNaN(args[1])) return console.log("amount is not a number.")
+
+if(!args[2]) return console.log("Invalid output.")
 
 args[0] = args[0].toLowerCase()
+
 openGenBot.max = parseInt(args[1])
 
 switch(args[0]){
+
     case "netflix":
+
         grab("Netflix")
+
         break
+
     case "spotify":
+
         grab("Spotify")
+
         break
+
     case "nordvpn":
+
         grab("NordVPN")
+
         break
+
     case "disney":
+
         grab("Disney")
+
         break
+
     default:
-        console.log("cuenta no valida ☹️.")
+
+        console.log("Invalid accountType.")
+
         break
+
 }
+
+Footer
+
+© 2023 GitHub, Inc.
+
+Footer navigation
+
+Terms
+
+Privacy
+
+Security
+
+Status
+
+Docs
+
+Contact GitHub
+
+Pricing
+
+API
+
+Training
+
+Blog
+
+About
+
+opengen-bot/index.js at main · I2rys/opengen-bot
+
+
+
